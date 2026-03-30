@@ -18,6 +18,8 @@ services:
       - "8080:8080"
     depends_on:
       - auth-service
+      - order-service
+      - tracking-service
 
   # Backend Services
   auth-service:
@@ -31,16 +33,20 @@ services:
       - db
 
   order-service:
-    build: ./backend/services/order-service
+    build:
+      context: .
+      dockerfile: ./backend/services/order-service/Dockerfile
     environment:
-      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
     depends_on:
       - db
 
   tracking-service:
-    build: ./backend/services/tracking-service
+    build:
+      context: .
+      dockerfile: ./backend/services/tracking-service/Dockerfile
     environment:
-      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
     depends_on:
       - db
 
@@ -106,6 +112,18 @@ services:
       - "3003:3000"
     volumes:
       - ./frontend/support-portal:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  auth-portal:
+    build:
+      context: ./frontend/auth-portal
+      dockerfile: ../Dockerfile.portal
+    ports:
+      - "3004:3000"
+    volumes:
+      - ./frontend/auth-portal:/app
       - /app/node_modules
     depends_on:
       - api-gateway

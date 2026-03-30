@@ -12,8 +12,7 @@ namespace Logistics.Data.Models
         [MinLength(6)]
         public string Password { get; set; } = string.Empty;
 
-        [Required]
-        public UserRole Role { get; set; }
+        public string RoleName { get; set; } = "Customer";
     }
 
     public class UserLoginDto

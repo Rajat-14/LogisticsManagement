@@ -2,14 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Logistics.Data.Models
 {
-    public enum UserRole
-    {
-        Customer,
-        Driver,
-        Manager,
-        SupportStaff
-    }
-
     public class User : BaseEntity
     {
         [Required]
@@ -19,7 +11,6 @@ namespace Logistics.Data.Models
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
 
-        [Required]
-        public UserRole Role { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
     }
 }

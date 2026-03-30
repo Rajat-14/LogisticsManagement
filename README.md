@@ -42,6 +42,4 @@ docker-compose up --build
 docker-compose down
 ```
 
-## External Integrations
-- **Google Maps API**: Used by the `route-service` for route management.
-- **Payment Gateway**: Integration point for processing customer payments.
+

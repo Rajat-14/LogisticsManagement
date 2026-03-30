@@ -13,11 +13,13 @@ namespace AuthService.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Role> _roleRepository;
         private readonly IConfiguration _configuration;
 
-        public AuthController(IRepository<User> userRepository, IConfiguration configuration)
+        public AuthController(IRepository<User> userRepository, IRepository<Role> roleRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _configuration = configuration;
         }
 
@@ -30,12 +32,22 @@ namespace AuthService.Controllers
                 return BadRequest("User already exists.");
             }
 
+            var roleName = string.IsNullOrEmpty(request.RoleName) ? "Customer" : request.RoleName;
+            var roles = await _roleRepository.FindAsync(r => r.Name == roleName);
+            var role = roles.FirstOrDefault();
+
+            if (role == null)
+            {
+                return BadRequest("Invalid role specified.");
+            }
+
             var user = new User
             {
                 Email = request.Email,
-                Role = request.Role,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
             };
+
+            user.UserRoles.Add(new UserRole { User = user, Role = role });
 
             await _userRepository.AddAsync(user);
             await _userRepository.SaveChangesAsync();
@@ -46,7 +58,10 @@ namespace AuthService.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto request)
         {
-            var users = await _userRepository.FindAsync(u => u.Email == request.Email);
+            var users = await _userRepository.FindAsyncWithIncludes(
+                u => u.Email == request.Email,
+                "UserRoles.Role");
+            
             var user = users.FirstOrDefault();
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
@@ -55,17 +70,23 @@ namespace AuthService.Controllers
             }
 
             var token = CreateToken(user);
+            var primaryRole = user.UserRoles.FirstOrDefault()?.Role.Name ?? "Customer";
 
-            return Ok(new { token, user.Email, user.Role });
+            return Ok(new { token, user.Email, role = primaryRole });
         }
 
         private string CreateToken(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
+                new Claim(ClaimTypes.Email, user.Email)
             };
+
+            // Add roles to claims
+            foreach (var userRole in user.UserRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name));
+            }
 
             var tokenKey = _configuration.GetSection("AppSettings:Token").Value;
             if (string.IsNullOrEmpty(tokenKey)) throw new Exception("Token key is missing in configuration.");

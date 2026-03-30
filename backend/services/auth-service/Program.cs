@@ -9,7 +9,12 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 // Configure PostgreSQL using Shared Data Layer
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -48,6 +53,9 @@ using (var scope = app.Services.CreateScope())
         {
             context.Database.Migrate();
         }
+        
+        // Seed initial data
+        DbInitializer.Initialize(context);
     }
     catch (Exception ex)
     {
