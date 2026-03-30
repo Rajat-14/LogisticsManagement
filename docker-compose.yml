@@ -1,0 +1,114 @@
+services:
+  # Database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: logistics_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./backend/api-gateway/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-service
+
+  # Backend Services
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./backend/services/auth-service/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
+      - AppSettings__Token=your-very-secure-and-long-secret-key-1234567890-abcdefghijklmnopqrstuvwxyz-1234567890
+    depends_on:
+      - db
+
+  order-service:
+    build: ./backend/services/order-service
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+    depends_on:
+      - db
+
+  tracking-service:
+    build: ./backend/services/tracking-service
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+    depends_on:
+      - db
+
+  route-service:
+    build: ./backend/services/route-service
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+    depends_on:
+      - db
+
+  delivery-verification:
+    build: ./backend/services/delivery-verification
+    depends_on:
+      - db
+
+  support-chat:
+    build: ./backend/services/support-chat
+    depends_on:
+      - db
+
+  # Frontend Portals
+  customer-portal:
+    build:
+      context: ./frontend/customer-portal
+      dockerfile: ../Dockerfile.portal
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/customer-portal:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  driver-portal:
+    build:
+      context: ./frontend/driver-portal
+      dockerfile: ../Dockerfile.portal
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend/driver-portal:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  manager-portal:
+    build:
+      context: ./frontend/manager-portal
+      dockerfile: ../Dockerfile.portal
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./frontend/manager-portal:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  support-portal:
+    build:
+      context: ./frontend/support-portal
+      dockerfile: ../Dockerfile.portal
+    ports:
+      - "3003:3000"
+    volumes:
+      - ./frontend/support-portal:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+volumes:
+  postgres_data:

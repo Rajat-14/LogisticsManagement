@@ -1,0 +1,39 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Node / React
+node_modules/
+dist/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
+
+# Docker
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.bak
+*.tmp
+*.log
+
+# Database Data
+data-layer/postgres/data/
+data-layer/postgres/pg_wal/
+data-layer/postgres/pg_commit_ts/
+
+# Build artifacts
+publish/
+app/build/
+app/publish/

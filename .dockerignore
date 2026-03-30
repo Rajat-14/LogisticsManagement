@@ -1,0 +1,11 @@
+** /obj/
+** /bin/
+**/node_modules/
+.git
+.vs
+.vscode
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.DS_Store
