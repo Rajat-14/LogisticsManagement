@@ -1,8 +1,0 @@
-{
-  "name": "service-placeholder",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "echo 'Service placeholders start'; sleep infinity"
-  },
-  "dependencies": {}
-}

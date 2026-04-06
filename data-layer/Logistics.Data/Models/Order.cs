@@ -7,6 +7,8 @@ namespace Logistics.Data.Models
         [Required]
         public string CustomerEmail { get; set; } = string.Empty;
 
+        public string DriverEmail { get; set; } = string.Empty;
+
         [Required]
         public string Origin { get; set; } = string.Empty;
 

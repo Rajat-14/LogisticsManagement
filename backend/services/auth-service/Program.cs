@@ -67,6 +67,23 @@ using (var scope = app.Services.CreateScope())
 // app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapGet("/api/auth/staff-summary", async (AppDbContext context) =>
+{
+    var driverRole = await context.Roles.FirstOrDefaultAsync(r => r.Name == "Driver");
+    var supportRole = await context.Roles.FirstOrDefaultAsync(r => r.Name == "Support");
+
+    var drivers = driverRole != null ? await context.UserRoles.Include(ur => ur.User).Where(ur => ur.RoleId == driverRole.Id).Select(ur => ur.User.Email).ToListAsync() : new List<string>();
+    var support = supportRole != null ? await context.UserRoles.Include(ur => ur.User).Where(ur => ur.RoleId == supportRole.Id).Select(ur => ur.User.Email).ToListAsync() : new List<string>();
+
+    return Results.Ok(new {
+        driverCount = drivers.Count,
+        drivers = drivers,
+        supportCount = support.Count,
+        support = support
+    });
+});
+
 app.MapControllers();
 
 app.Run();

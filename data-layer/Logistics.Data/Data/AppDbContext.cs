@@ -16,6 +16,8 @@ namespace Logistics.Data.Data
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<TrackingEvent> TrackingEvents { get; set; }
+        public DbSet<ChatSession> ChatSessions { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +58,12 @@ namespace Logistics.Data.Data
                 .HasOne(te => te.Order)
                 .WithMany(o => o.TrackingEvents)
                 .HasForeignKey(te => te.OrderId);
+
+            // Configure ChatSession -> ChatMessages
+            modelBuilder.Entity<ChatMessage>()
+                .HasOne(cm => cm.ChatSession)
+                .WithMany(cs => cs.Messages)
+                .HasForeignKey(cm => cm.ChatSessionId);
         }
     }
 }

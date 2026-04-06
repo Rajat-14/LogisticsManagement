@@ -51,19 +51,29 @@ services:
       - db
 
   route-service:
-    build: ./backend/services/route-service
+    build:
+      context: .
+      dockerfile: ./backend/services/route-service/Dockerfile
     environment:
-      DATABASE_URL: postgres://user:password@db:5432/logistics_db
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
     depends_on:
       - db
 
   delivery-verification:
-    build: ./backend/services/delivery-verification
+    build:
+      context: .
+      dockerfile: ./backend/services/delivery-verification/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
     depends_on:
       - db
 
   support-chat:
-    build: ./backend/services/support-chat
+    build:
+      context: .
+      dockerfile: ./backend/services/support-chat/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Database=logistics_db;Username=user;Password=password
     depends_on:
       - db
 
