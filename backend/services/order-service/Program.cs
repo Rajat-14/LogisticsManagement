@@ -17,8 +17,16 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseInMemoryDatabase("TestingDb"));
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
@@ -28,7 +36,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    context.Database.Migrate();
+    if (context.Database.IsRelational())
+    {
+        context.Database.Migrate();
+    }
 }
 
 app.MapGet("/api/orders/all", async (AppDbContext context) =>
@@ -72,3 +83,5 @@ app.MapPost("/api/orders/{id}/assign", async (int id, HttpContext httpContext, A
 
 app.MapControllers();
 app.Run();
+
+public partial class Program { }

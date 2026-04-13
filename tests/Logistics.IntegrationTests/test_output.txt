@@ -1,0 +1,52 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Logistics.Data -> /Users/rajatbhasin/Documents/Software Engineering/SE/data-layer/Logistics.Data/bin/Debug/net10.0/Logistics.Data.dll
+  OrderService -> /Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/bin/Debug/net10.0/OrderService.dll
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277: Found conflicts between different versions of "Microsoft.EntityFrameworkCore.Relational" that could not be resolved. [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277: There was a conflict between "Microsoft.EntityFrameworkCore.Relational, Version=10.0.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" and "Microsoft.EntityFrameworkCore.Relational, Version=10.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60". [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:     "Microsoft.EntityFrameworkCore.Relational, Version=10.0.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" was chosen because it was primary and "Microsoft.EntityFrameworkCore.Relational, Version=10.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" was not. [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:     References which depend on "Microsoft.EntityFrameworkCore.Relational, Version=10.0.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" [/Users/rajatbhasin/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.4/lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll]. [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:         /Users/rajatbhasin/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.4/lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:           Project file item includes which caused reference "/Users/rajatbhasin/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.4/lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll". [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:             /Users/rajatbhasin/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.4/lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:     References which depend on or have been unified to "Microsoft.EntityFrameworkCore.Relational, Version=10.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" []. [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:         /Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/bin/Debug/net10.0/OrderService.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:           Project file item includes which caused reference "/Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/bin/Debug/net10.0/OrderService.dll". [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:             /Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/bin/Debug/net10.0/OrderService.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:         /Users/rajatbhasin/Documents/Software Engineering/SE/data-layer/Logistics.Data/bin/Debug/net10.0/Logistics.Data.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:           Project file item includes which caused reference "/Users/rajatbhasin/Documents/Software Engineering/SE/data-layer/Logistics.Data/bin/Debug/net10.0/Logistics.Data.dll". [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:             /Users/rajatbhasin/Documents/Software Engineering/SE/data-layer/Logistics.Data/bin/Debug/net10.0/Logistics.Data.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.201/Microsoft.Common.CurrentVersion.targets(2451,5): warning MSB3277:             /Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/bin/Debug/net10.0/OrderService.dll [/Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/Logistics.IntegrationTests.csproj]
+  Logistics.IntegrationTests -> /Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/bin/Debug/net10.0/Logistics.IntegrationTests.dll
+Test run for /Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/bin/Debug/net10.0/Logistics.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.42]     Logistics.IntegrationTests.BookingIntegrationTests.PostOrder_CreatesOrderAndReturnsSuccess [FAIL]
+  Failed Logistics.IntegrationTests.BookingIntegrationTests.PostOrder_CreatesOrderAndReturnsSuccess [284 ms]
+  Error Message:
+   System.InvalidOperationException : Services for database providers 'Npgsql.EntityFrameworkCore.PostgreSQL', 'Microsoft.EntityFrameworkCore.InMemory' have been registered in the service provider. Only a single database provider can be registered in a service provider. If possible, ensure that Entity Framework is managing its service provider by removing the call to 'UseInternalServiceProvider'. Otherwise, consider conditionally registering the database provider, or maintaining one service provider per database provider.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Internal.DbContextServices.Initialize(IServiceProvider scopedProvider, DbContextOptions contextOptions, DbContext context)
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.GetRelationalService[TService](IInfrastructure`1 databaseFacade)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Program.<Main>$(String[] args) in /Users/rajatbhasin/Documents/Software Engineering/SE/backend/services/order-service/Program.cs:line 31
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.DeferredHost.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start(IHost host)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.DelegatedWebApplicationFactory.CreateHost(IHostBuilder builder)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.StartServer()
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()
+   at Logistics.IntegrationTests.BookingIntegrationTests.PostOrder_CreatesOrderAndReturnsSuccess() in /Users/rajatbhasin/Documents/Software Engineering/SE/tests/Logistics.IntegrationTests/BookingIntegrationTests.cs:line 44
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 292 ms - Logistics.IntegrationTests.dll (net10.0)
